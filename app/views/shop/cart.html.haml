@@ -1,2 +1,12 @@
-%h1 Shop#cart
-%p Find me in app/views/shop/cart.html.haml
+%h1 Cart
+%ul
+  - for product in @products
+    %li
+      = product.name
+      = product.price
+      $
+      = link_to 'Remove from cart', shop_cart_delete_path(product.id), method: :delete
+
+Sum:
+= @products.reduce(0) { |sum, product| sum + product.price }
+$

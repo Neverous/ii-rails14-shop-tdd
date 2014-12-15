@@ -1,2 +1,4 @@
-%h1 Shop#product
-%p Find me in app/views/shop/product.html.haml
+%h1= @product.name
+= @product.price
+$
+= link_to 'Add to cart', shop_cart_add_path(@product), method: :put

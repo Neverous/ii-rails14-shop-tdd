@@ -1,2 +1,10 @@
-%h1 Shop#index
-%p Find me in app/views/shop/index.html.haml
+%h1 Available products
+- for category in @categories
+  %h2= category.name
+  %ul
+    - for product in category.products
+      %li
+        = link_to product.name, shop_product_path(product)
+        = product.price
+        $
+        = link_to 'Add to cart', shop_cart_add_path(product), method: :put
