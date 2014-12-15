@@ -11,7 +11,7 @@ RSpec.describe Product, :type => :model do
         product = Product.new(name: 'test', price: 3.14)
         expect(product.valid?).to eq(false)
 
-        product = Product.new(name: 'test', price: 3.14, category_id: 9)
+        product = Product.new(name: 'test', price: 3.14, category_id: 777)
         expect(product.valid?).to eq(false)
     end
 

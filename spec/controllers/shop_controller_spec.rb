@@ -2,25 +2,40 @@ require 'rails_helper'
 
 RSpec.describe ShopController, :type => :controller do
 
-  describe "GET index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
+    describe "index" do
+        it "returns http success" do
+            get :index
+            expect(response).to have_http_status(:success)
+        end
     end
-  end
 
-  describe "GET product" do
-    it "returns http success" do
-      get :product
-      expect(response).to have_http_status(:success)
+    describe "product" do
+        category = Category.create(name: 'test')
+        product = Product.create(name: 'test', price: 2.14, category: category)
+        it "get returns http success" do
+            get :product, id: product.id
+            expect(response).to have_http_status(:success)
+        end
     end
-  end
 
-  describe "GET cart" do
-    it "returns http success" do
-      get :cart
-      expect(response).to have_http_status(:success)
+    describe "cart" do
+        category = Category.create(name: 'test')
+        product = Product.create(name: 'test', price: 2.14, category: category)
+        it "get returns http success" do
+            get :cart
+            expect(response).to have_http_status(:success)
+        end
+
+        it "put returns http success" do
+            put :cart, id: product.id
+            expect(response).to have_http_status(:success)
+        end
+
+        it "delete returns http success" do
+            put :cart, id: product.id
+            delete :cart, id: product.id
+            expect(response).to have_http_status(:success)
+        end
     end
-  end
 
 end
